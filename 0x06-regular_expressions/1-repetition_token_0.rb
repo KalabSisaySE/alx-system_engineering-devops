@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-regx = /hbtt+n/
+regx = /hbt{2,5}n/
 if ARGV.empty?
     return
 else
