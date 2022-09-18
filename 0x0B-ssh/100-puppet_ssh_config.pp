@@ -2,11 +2,15 @@
 # to disable password authentication 
 # and setup a private key
 
-class { 'ssh::client':
-  options => {
-    'Host 18.208.143.155' => {
-      'PasswordAuthentication' => 'no'
-      'IdentityFile'           => '~/.ssh/id_rsa'
-    }
-  }
+file_line { 'Turn off passwd auth':
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => '    PasswordAuthentication no',
 }
+
+file_line { 'Declare identity file':
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => '    IdentityFile ~/.ssh/school',
+}
+
