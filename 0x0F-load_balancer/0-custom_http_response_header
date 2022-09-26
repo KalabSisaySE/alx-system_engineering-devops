@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# configs the nginx server for a custom http response header
+# to track which server is answering the http request
+
+custom_header="\n\tadd_header X-Served-By 14867-web-02;"
+sudo sed -i "37a\ $custom_header" /etc/nginx/sites-enabled/default
+sudo service nginx restart
