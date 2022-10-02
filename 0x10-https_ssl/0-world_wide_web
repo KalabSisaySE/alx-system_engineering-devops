@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# displays information about subdomain
+parse () {
+    recrd_type=$(dig "$1" | grep "^$1" | awk '{print $4}')
+    dest=$(dig "$1" | grep "^$1" | awk '{print $5}')
+    echo "The subdomain $2 is a $recrd_type record and points to $dest"
+}
+
+if [ $# -eq 1 ]
+then
+    subdomains=('www' 'lb-01' 'web-01' 'web-02')
+    for subdomain in "${subdomains[@]}"
+    do
+        parse "$subdomain.$1" "$subdomain" 
+    done
+else
+    parse "$1" "$2" 
+fi
