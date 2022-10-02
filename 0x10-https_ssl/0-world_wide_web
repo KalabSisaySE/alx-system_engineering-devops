@@ -14,5 +14,5 @@ then
         parse "$subdomain.$1" "$subdomain" 
     done
 else
-    parse "$1" "$2" 
+    parse "$2.$1" "$2" 
 fi
