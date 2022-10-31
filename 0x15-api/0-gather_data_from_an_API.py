@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""the `0-gather_data_from_an_API` module
-retrieves employee data from API
-"""
+"""Returns to-do list information for a given employee ID."""
+import json
+from sys import argv
 from urllib import request
 from sys import argv
-import json
 
 emp_url = "https://jsonplaceholder.typicode.com/users/" + argv[1]
 todo_url = "https://jsonplaceholder.typicode.com/todos/"
