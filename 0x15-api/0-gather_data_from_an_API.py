@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""the `0-gather_data_from_an_API` module
-retrieves employee data from API
-"""
+"""the `0-gather_data_from_an_API` module retrieves employee data from API"""
 from urllib import request
 from sys import argv
 import json
