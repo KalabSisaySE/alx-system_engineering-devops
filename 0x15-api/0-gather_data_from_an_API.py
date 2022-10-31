@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """retrieves an API for a given employee ID, returns information about his/her TODO list progress."""
-from urllib import request
-from sys import argv
+
 import json
+from sys import argv
+from urllib import request
+
 
 emp_url = "https://jsonplaceholder.typicode.com/users/" + argv[1]
 todo_url = "https://jsonplaceholder.typicode.com/todos/"
