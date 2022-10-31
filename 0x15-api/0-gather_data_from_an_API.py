@@ -23,7 +23,7 @@ if __name__ == "__main__":
         ]
 
     print(
-            "Employee {} is done with tasks ({}/{}):".format(
+        "Employee {} is done with tasks({}/{}):".format(
             emp_data["name"], len(completed), len(total)
         )
     )
