@@ -29,6 +29,6 @@ if __name__ == "__main__":
     )
     for task in completed:
         if task == completed[len(completed) - 1]:
-            print("\t {}".format(task["title"]), end="")
+            print("     {}".format(task["title"]), end="")
         else:
-            print("\t {}".format(task["title"]))
+            print("     {}".format(task["title"]))
