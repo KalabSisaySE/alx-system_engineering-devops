@@ -16,8 +16,8 @@ if __name__ == "__main__":
     print(
         "Employee {} is done with tasks({}/{}):".format(
             response.json().get("name"),
-            len(list(completed)),
-            len(list(user_todos))
+            len(completed),
+            len(user_todos)
         )
     )
     for todo in completed:
