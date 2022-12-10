@@ -1,34 +1,24 @@
 #!/usr/bin/python3
-"""the `0-gather_data_from_an_API` module
-retrieves employee data from API
-"""
-import json
-from sys import argv
-from urllib import request
+"""fetchs user data based on the user id given as a command line argument"""
 
 if __name__ == "__main__":
-    emp_url = "https://jsonplaceholder.typicode.com/users/" + argv[1]
-    todo_url = "https://jsonplaceholder.typicode.com/todos/"
+    import requests
+    from sys import argv
 
-    with request.urlopen(emp_url) as response:
-        emp_data = json.loads(response.read())
+    url = "https://jsonplaceholder.typicode.com/users/" + argv[1]
+    response = requests.get(url=url)
 
-    with request.urlopen(todo_url) as res:
-        todos = json.loads(res.read())
-        total = [todo for todo in todos if todo.get("userId") == int(argv[1])]
-        completed = [
-            todo
-            for todo in todos
-            if todo.get("userId") == int(argv[1]) and todo.get("completed")
-        ]
-
+    todos = requests.get("https://jsonplaceholder.typicode.com/todos")
+    user_todos = list(
+        filter(lambda x: x.get("userId") == int(argv[1]), todos.json())
+    )
+    completed = list(filter(lambda x: x.get("completed"), user_todos))
     print(
         "Employee {} is done with tasks({}/{}):".format(
-            emp_data["name"], len(completed), len(total)
+            response.json().get("name"),
+            len(list(completed)),
+            len(list(user_todos))
         )
     )
-    for task in completed:
-        if task == completed[len(completed) - 1]:
-            print("     {}".format(task["title"]), end="")
-        else:
-            print("     {}".format(task["title"]))
+    for todo in completed:
+        print(f'\t {todo.get("title")}')
